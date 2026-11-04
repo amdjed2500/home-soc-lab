@@ -1,7 +1,7 @@
 # Shared Investigation Scenario: Network Detection → Memory Forensics
 
 ## Overview
-This document demonstrates an **end-to-end investigation workflow** connecting two repositories:
+> **NOTE: This is a SIMULATED example for portfolio demonstration.** The alert data, memory dump analysis, and incident report are illustrative and do not represent an actual performed investigation. All evidence is synthetic. Real captures and forensic output would be required for a genuine investigation.
 
 - **Home SOC Lab** (https://github.com/amdjed2500/home-soc-lab) — network detection & monitoring
 - **Memory Forensics Triage** (https://github.com/amdjed2500/memory-forensics-triage) — memory dump analysis

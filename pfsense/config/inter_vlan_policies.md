@@ -9,11 +9,21 @@
 | VLAN20 (Attack) | VLAN10 (Targets) | Allow | 22,80,443,445,3389 | Yes | Attack simulation to targets only |
 | VLAN20 (Attack) | VLAN30 (Monitoring) | Block | Any | Yes | Attacker must not see monitoring |
 | VLAN20 (Attack) | LAN (Management) | Block | Any | Yes | Attacker must not reach management |
-| VLAN30 (Monitoring) | VLAN10 (Targets) | Allow | Any | No | Monitoring must see target traffic (SPAN) |
-| VLAN30 (Monitoring) | VLAN20 (Attack) | Allow | Any | No | Monitoring must see attack traffic (SPAN) |
-| VLAN30 (Monitoring) | LAN (Management) | Allow | 443,22 | Yes | Monitoring management access only |
+| VLAN30 (Monitoring) | VLAN10 (Targets) | Block | Any | Yes | Monitoring is passive capture only — no initiated connections |
+| VLAN30 (Monitoring) | VLAN20 (Attack) | Block | Any | Yes | Monitoring is passive capture only — no initiated connections |
+| VLAN30 (Monitoring) | LAN (Management) | Block | Any | Yes | Monitoring is passive capture only — no initiated connections |
 | LAN (Management) | Any | Allow | Any | Yes | Management full access (admin only) |
 | Any | Any | Block | Any | Yes | Default deny |
+
+## Monitoring Interface Design (eth1)
+The Security Onion monitoring interface (eth1) is a **passive capture interface**:
+- Receives mirrored traffic from the SPAN/mirror port
+- Does NOT initiate any network connections
+- Does NOT have an IP address (promiscuous mode only)
+- Does NOT participate in any VLAN routing
+
+This is a critical security design principle: a monitoring interface should never
+be able to initiate connections to any network segment.
 
 ## pfSense Rule Implementation
 

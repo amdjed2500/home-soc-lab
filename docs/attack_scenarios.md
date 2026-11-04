@@ -44,9 +44,13 @@ src_ip: 192.168.20.10 AND dest_ip: 192.168.10.10 AND event_type: alert
 
 **Objective:** Detect credential stuffing against SSH.
 
-**Attacker:** Kali (192.168.20.10)  
-**Target:** Windows 10 SSH (192.168.10.10:22)  
-**Duration:** ~60 seconds
+**Prerequisites:** Windows target must have OpenSSH Server installed and running.
+```powershell
+# On Windows target
+Add-WindowsCapability -Online -Name OpenSSH.Server~~~~0.0.1.0
+Start-Service sshd
+Set-Service -Name sshd -StartupType 'Automatic'
+```
 
 ### Steps
 ```bash

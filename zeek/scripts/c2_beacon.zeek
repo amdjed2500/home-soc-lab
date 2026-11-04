@@ -19,9 +19,10 @@ event http_request(c: connection, method: string, original_URI: string, unescape
         local key = original_URI;
         local now = network_time();
         
-        if (src in beacon_tracker && key in beacon_tracker[src]) {
+        if ([src, key] in beacon_tracker) {
             local interval = now - last_seen[src, key];
-            if (interval < 5min && interval > 10sec) {
+            # Beaconing: consistent intervals between 10s and 5min
+            if (interval >= 10sec && interval <= 5min) {
                 beacon_tracker[src, key] += 1;
                 if (beacon_tracker[src, key] >= 5) {
                     NOTICE([$note=C2_Beacon_Detected,

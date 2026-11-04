@@ -38,21 +38,39 @@
 
 ### Why: Security Onion must see ALL traffic, not just management traffic.
 
-### Option A: Virtual Switch Port Mirroring (VMware)
-1. vSwitch → Port Group → Monitoring → Enable promiscuous mode
-2. Security Onion monitoring NIC → connected to mirrored port group
-3. Verify: `tcpdump -i eth1 -c 10` on Security Onion should show LAN traffic
+### Option A: Virtual Switch Port Mirroring (VMware/ESXi)
+1. Create a dedicated port group "Monitoring" on the vSwitch
+2. Enable promiscuous mode on the Monitoring port group
+3. Configure a mirror session on the vSwitch:
+   - Source: LAN port group (or specific VLAN)
+   - Destination: Monitoring port group
+4. Security Onion monitoring NIC (eth1) → connected to Monitoring port group
+5. Verify: `tcpdump -i eth1 -c 10` on Security Onion should show LAN traffic
 
-### Option B: pfSense SPAN (Physical)
-1. pfSense → Interfaces → Assignments → Add SPAN port
-2. Select source interface (LAN) → destination (monitoring port)
-3. Security Onion monitoring NIC connected to SPAN port
+### Option B: Physical Managed Switch (SPAN/RSPAN)
+1. On the managed switch, configure a mirror session:
+   - Source ports: all ports carrying VLAN traffic
+   - Destination port: port connected to Security Onion eth1
+2. Security Onion monitoring NIC (eth1) → connected to mirror destination port
+3. Verify: `tcpdump -i eth1 -c 10` on Security Onion should show traffic
+
+### Option C: Hypervisor-Specific (VirtualBox)
+1. VirtualBox does not support SPAN natively
+2. Alternative: Use a Linux bridge with macvtap and tcpdump
+3. Or: Use a dedicated monitoring VM that captures via promiscuous mode on the host interface
+4. For portfolio purposes, document the design even if full SPAN isn't achievable in VirtualBox
+
+### Important Distinction
+- **Promiscuous mode alone** is NOT equivalent to a proper mirror session
+- Promiscuous mode allows a NIC to see all traffic on its segment
+- A mirror/SPAN session explicitly copies traffic from source ports to a destination port
+- Without proper mirroring, Security Onion eth1 will only see broadcast/multicast traffic, not unicast flows between other hosts
 
 ### Verification
 ```bash
-# On Security Onion
+# On Security Onion — should see UNICAST traffic between other hosts
 sudo tcpdump -i eth1 -nn -c 20
-# Should see traffic from 192.168.1.0/24, 192.168.10.0/24, etc.
+# Look for: IP 192.168.20.10 > 192.168.10.10 (unicast, not broadcast)
 ```
 
 ## 3. pfSense Syslog Integration

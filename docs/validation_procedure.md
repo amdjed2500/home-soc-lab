@@ -21,7 +21,7 @@ sudo suricata -T -c /etc/suricata/suricata.yaml
 
 # Check rules loaded
 sudo grep -c "100000" /etc/suricata/rules/custom.rules
-# Expected: 8
+# Expected: 7 (rules 1000001-1000007)
 
 # Trigger a port scan from Kali
 nmap -sS -p 22,80,443 192.168.10.10
@@ -53,10 +53,10 @@ sudo zeekctl status
 sudo grep "c2_beacon" /opt/zeek/share/zeek/site/local.zeek
 # Expected: "@load ./c2_beacon"
 
-# Simulate beaconing
+# Simulate beaconing (15s intervals to match detection threshold)
 for i in $(seq 1 6); do
   curl -s http://192.168.10.10/api/checkin
-  sleep 2
+  sleep 15
 done
 
 # Check notice

@@ -83,34 +83,13 @@ Log: Yes
 Description: Block attacker from internet (isolated)
 ```
 
-### Interface: VLAN30 (Monitoring)
-```
-Action: Pass
-Source: VLAN30 net
-Destination: VLAN10 net
-Log: No
-Description: Monitoring visibility to targets (SPAN)
+### Interface: VLAN30 (Monitoring) — REMOVED
+VLAN30 is no longer a routed pfSense interface. The monitoring interface (eth1) is
+a passive capture interface with no IP address and no routing.
 
-Action: Pass
-Source: VLAN30 net
-Destination: VLAN20 net
-Log: No
-Description: Monitoring visibility to attackers (SPAN)
-
-Action: Pass
-Source: VLAN30 net
-Destination: LAN net
-Protocol: TCP
-Destination Port: 443,22
-Log: Yes
-Description: Monitoring management access
-
-Action: Block
-Source: VLAN30 net
-Destination: Any
-Log: Yes
-Description: Block monitoring from internet
-```
+If you still want a management VLAN for Security Onion, use the LAN (192.168.1.0/24)
+or create a dedicated management VLAN. The monitoring interface (eth1) should NOT
+have a pfSense interface or firewall rules — it receives mirrored traffic passively.
 
 ## Verification
 ```bash

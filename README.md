@@ -12,12 +12,11 @@ A documented home security operations center (SOC) lab for portfolio showcase. B
 [Internet] → [pfSense WAN (em0)]
               ├── [pfSense LAN (em1) → 192.168.1.0/24 (Management)]
               ├── [pfSense VLAN10 (em1.10) → 192.168.10.0/24 (Targets)]
-              ├── [pfSense VLAN20 (em1.20) → 192.168.20.0/24 (Attack)]
-              └── [pfSense VLAN30 (em1.30) → 192.168.30.0/24 (Monitoring/SPAN)]
-                      ↓ (SPAN/Mirror)
+              └── [pfSense VLAN20 (em1.20) → 192.168.20.0/24 (Attack)]
+                      ↓ (SPAN/Mirror via managed switch or hypervisor)
               [Security Onion]
-                ├── eth0 (Management) → 192.168.1.50
-                └── eth1 (Monitoring) → receives mirrored traffic
+                ├── eth0 (Management) → 192.168.1.50 (routed, has IP)
+                └── eth1 (Monitoring) → passive capture, NO IP, NO routing
 ```
 
 ## Components

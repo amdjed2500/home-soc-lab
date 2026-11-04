@@ -12,25 +12,34 @@
 [Internet] → [pfSense WAN (em0)]
               ├── [pfSense LAN (em1) → 192.168.1.0/24 (Management)]
               ├── [pfSense VLAN10 (em1.10) → 192.168.10.0/24 (Targets)]
-              ├── [pfSense VLAN20 (em1.20) → 192.168.20.0/24 (Attack)]
-              └── [pfSense VLAN30 (em1.30) → 192.168.30.0/24 (Monitoring/SPAN)]
+              └── [pfSense VLAN20 (em1.20) → 192.168.20.0/24 (Attack)]
+                      ↓ (SPAN/Mirror via managed switch or hypervisor)
+              [Security Onion]
+                ├── eth0 (Management) → 192.168.1.50 (routed, has IP)
+                └── eth1 (Monitoring) → passive capture, NO IP, NO routing
 ```
 
 ### pfSense VLAN Configuration
 1. Interfaces → Assignments → VLANs → Add
    - Parent: em1 (LAN)
-   - VLAN Tag: 10, 20, 30
-2. Interfaces → Assignments → Add each VLAN as interface (OPT1, OPT2, OPT3)
+   - VLAN Tag: 10, 20
+2. Interfaces → Assignments → Add each VLAN as interface (OPT1, OPT2)
 3. Enable each interface, set static IP:
    - OPT1 (VLAN10): 192.168.10.1/24
    - OPT2 (VLAN20): 192.168.20.1/24
-   - OPT3 (VLAN30): 192.168.30.1/24
-4. Firewall rules per interface (see pfsense/config/firewall_rules.md)
+4. Firewall rules per interface (see pfsense/config/inter_vlan_policies.md)
+
+### Monitoring Interface (NO VLAN)
+Security Onion eth1 is NOT a VLAN interface. It is a passive capture interface:
+- No pfSense interface assignment
+- No IP address
+- No firewall rules
+- Receives mirrored traffic from the managed switch or hypervisor SPAN session
 
 ### VirtualBox/VMware Setup
-- Create virtual switches: WAN (NAT), LAN, VLAN10, VLAN20, VLAN30
-- pfSense VM: 2 NICs (WAN + LAN trunk with VLANs)
-- Security Onion VM: 1 NIC on LAN (management) + 1 NIC on VLAN30 (SPAN/monitoring)
+- Create virtual switches: WAN (NAT), LAN, VLAN10, VLAN20, Monitoring (SPAN destination)
+- pfSense VM: 2 NICs (WAN + LAN trunk with VLANs 10, 20)
+- Security Onion VM: 2 NICs (eth0 on LAN for management + eth1 on Monitoring for SPAN capture)
 - Kali VM: 1 NIC on VLAN20
 - Target VMs: 1 NIC on VLAN10
 

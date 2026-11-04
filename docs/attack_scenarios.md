@@ -23,7 +23,7 @@ nmap -O 192.168.10.10
 ### Expected Detections
 | Tool | Alert/Log | Rule ID |
 |------|-----------|---------|
-| Suricata | Port Scan Detected | 1000008 |
+| Suricata | Port Scan Detected | 1000001 |
 | Zeek | conn.log entries (S0 state) | N/A |
 | pfSense | Firewall log (allowed/blocked) | N/A |
 

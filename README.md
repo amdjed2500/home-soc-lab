@@ -9,25 +9,48 @@ A documented home security operations center (SOC) lab for portfolio showcase. B
 
 ## Architecture
 ```
-[Internet] → [pfSense Firewall] → [LAN Switch]
-                                    ├── [Security Onion (SIEM/IDS)]
-                                    ├── [Attack Box (Kali)]
-                                    └── [Target VMs (Windows/Linux)]
+[Internet] → [pfSense WAN (em0)]
+              ├── [pfSense LAN (em1) → 192.168.1.0/24 (Management)]
+              ├── [pfSense VLAN10 (em1.10) → 192.168.10.0/24 (Targets)]
+              ├── [pfSense VLAN20 (em1.20) → 192.168.20.0/24 (Attack)]
+              └── [pfSense VLAN30 (em1.30) → 192.168.30.0/24 (Monitoring/SPAN)]
+                      ↓ (SPAN/Mirror)
+              [Security Onion]
+                ├── eth0 (Management) → 192.168.1.50
+                └── eth1 (Monitoring) → receives mirrored traffic
 ```
 
 ## Components
-- **pfSense** — firewall, NAT, VPN, traffic shaping
+- **pfSense** — firewall, NAT, VPN, traffic shaping, VLAN routing
 - **Security Onion** — SIEM, log management, IDS/IPS (Suricata + Zeek)
-- **Kali Linux** — attack simulation
-- **Windows/Linux VMs** — targets for testing
+  - **Management interface (eth0):** administration, Kibana, SSH
+  - **Monitoring interface (eth1):** receives SPAN/mirrored traffic (required, not optional)
+- **Kali Linux** — attack simulation (isolated on VLAN20)
+- **Windows/Linux VMs** — targets for testing (isolated on VLAN10)
 
-## Setup Guide
-See [docs/SETUP.md](docs/SETUP.md).
+## Network Visibility Design
+Security Onion has TWO interfaces:
+1. **Management (eth0):** 192.168.1.50 — for administration, Kibana, SSH
+2. **Monitoring (eth1):** receives mirrored traffic from pfSense SPAN port
+
+A management interface alone does NOT provide traffic visibility. The monitoring interface is **required** to inspect all network traffic.
+
+## Documentation
+- [Setup Guide](docs/SETUP.md) — complete v2 setup with VLANs, SPAN, syslog
+- [Architecture](docs/ARCHITECTURE.md) — Mermaid topology diagram
+- [Inter-VLAN Policies](pfsense/config/inter_vlan_policies.md) — specific firewall rules per VLAN
+- [Attack Scenarios](docs/attack_scenarios.md) — 5 repeatable scenarios with expected detections
+- [Validation Procedure](docs/validation_procedure.md) — 7 tests proving the SOC works
+- [Shared Investigation](docs/SHARED_INVESTIGATION_SCENARIO.md) — network → memory forensics workflow
 
 ## Skills Demonstrated
-- Network segmentation & firewall rules
+- Network segmentation & VLAN design
+- Traffic visibility via SPAN/mirror port
 - SIEM deployment & log correlation
-- IDS/IPS rule tuning (Suricata)
+- IDS/IPS rule tuning (Suricata + Zeek)
+- Inter-VLAN firewall policy enforcement
+- Repeatable attack simulation
+- Validation & testing procedures
 - Incident response workflow
 - Documentation & architecture design
 

@@ -1,0 +1,61 @@
+{
+  "name": "Home SOC Lab — Detection Coverage",
+  "versions": {
+    "attack": "14",
+    "navigator": "4.9.1",
+    "layer": "4.5"
+  },
+  "domain": "enterprise-attack",
+  "description": "MITRE ATT&CK coverage mapped to the 5 repeatable attack scenarios in the Home SOC Lab (Suricata + Zeek + pfSense). Each technique is annotated with the scenario that exercises it and the detecting rule/script.",
+  "filters": {
+    "platforms": ["Windows", "Linux", "Network"]
+  },
+  "sorting": 0,
+  "layout": {
+    "layout": "side",
+    "aggregateFunction": "average",
+    "showID": true,
+    "showName": true,
+    "showAggregateScores": false,
+    "countUnscored": false
+  },
+  "hideDisabled": false,
+  "techniques": [
+    { "techniqueID": "T1595", "tactic": "reconnaissance", "color": "#ff6666", "comment": "Scenario 1 (Port Scan) — Active scanning; Suricata rule 1000001", "enabled": true, "score": 100 },
+    { "techniqueID": "T1595.001", "tactic": "reconnaissance", "color": "#ff6666", "comment": "Scenario 1 — Scanning IP blocks; nmap SYN scan of 1-1000", "enabled": true, "score": 100 },
+    { "techniqueID": "T1595.002", "tactic": "reconnaissance", "color": "#ff6666", "comment": "Scenario 1 — Vulnerability scanning; service version + OS detection", "enabled": true, "score": 100 },
+    { "techniqueID": "T1046", "tactic": "discovery", "color": "#ff6666", "comment": "Scenario 1 (Port Scan) — Network service discovery; Zeek conn.log S0 states", "enabled": true, "score": 100 },
+    { "techniqueID": "T1110", "tactic": "credential-access", "color": "#ff9933", "comment": "Scenario 2 (SSH Brute Force) — Brute force; hydra against SSH/22", "enabled": true, "score": 100 },
+    { "techniqueID": "T1110.001", "tactic": "credential-access", "color": "#ff9933", "comment": "Scenario 2 — Password guessing; user admin, rockyou.txt", "enabled": true, "score": 100 },
+    { "techniqueID": "T1021.004", "tactic": "lateral-movement", "color": "#ff9933", "comment": "Scenario 2 — Remote services SSH; Suricata rule 1000002", "enabled": true, "score": 100 },
+    { "techniqueID": "T1071.004", "tactic": "command-and-control", "color": "#9966ff", "comment": "Scenario 3 (DNS Tunneling) — DNS application protocol; dnscat2", "enabled": true, "score": 100 },
+    { "techniqueID": "T1048", "tactic": "exfiltration", "color": "#9966ff", "comment": "Scenario 3 — Exfiltration over alternative protocol; Suricata rule 1000003", "enabled": true, "score": 100 },
+    { "techniqueID": "T1048.003", "tactic": "exfiltration", "color": "#9966ff", "comment": "Scenario 3 — Exfiltration over unencrypted non-C2 protocol; long DNS queries", "enabled": true, "score": 100 },
+    { "techniqueID": "T1071.001", "tactic": "command-and-control", "color": "#3399ff", "comment": "Scenario 4 (C2 Beaconing) — Web protocols; curl GET /api/checkin", "enabled": true, "score": 100 },
+    { "techniqueID": "T1105", "tactic": "command-and-control", "color": "#3399ff", "comment": "Scenario 4 — Ingress tool transfer; Suricata rule 1000004", "enabled": true, "score": 100 },
+    { "techniqueID": "T1008", "tactic": "command-and-control", "color": "#3399ff", "comment": "Scenario 4 — Fallback channels; Zeek c2_beacon.zeek notice after 5 beacons", "enabled": true, "score": 100 },
+    { "techniqueID": "T1021.002", "tactic": "lateral-movement", "color": "#33cc66", "comment": "Scenario 5 (SMB Lateral Movement) — SMB/admin shares; psexec.py", "enabled": true, "score": 100 },
+    { "techniqueID": "T1570", "tactic": "lateral-movement", "color": "#33cc66", "comment": "Scenario 5 — Lateral tool transfer; PSEXESVC.exe; Suricata rule 1000005", "enabled": true, "score": 100 },
+    { "techniqueID": "T1005", "tactic": "collection", "color": "#33cc66", "comment": "Scenario 5 — Data from local system; Zeek smb.log file access", "enabled": true, "score": 100 }
+  ],
+  "gradient": {
+    "colors": ["#ff6666", "#ff9933", "#9966ff", "#3399ff", "#33cc66"],
+    "minValue": 0,
+    "maxValue": 100
+  },
+  "legendItems": [
+    { "label": "Scenario 1 — Port Scan", "color": "#ff6666" },
+    { "label": "Scenario 2 — SSH Brute Force", "color": "#ff9933" },
+    { "label": "Scenario 3 — DNS Tunneling", "color": "#9966ff" },
+    { "label": "Scenario 4 — C2 Beaconing", "color": "#3399ff" },
+    { "label": "Scenario 5 — SMB Lateral Movement", "color": "#33cc66" }
+  ],
+  "metadata": [
+    { "name": "author", "value": "Amdjed Salhi" },
+    { "name": "created", "value": "2026-11-09" },
+    { "name": "status", "value": "Detection coverage for simulated scenarios; live evidence pending lab deployment" }
+  ],
+  "links": [
+    { "label": "Home SOC Lab repo", "url": "https://github.com/amdjed2500/home-soc-lab" }
+  ]
+}

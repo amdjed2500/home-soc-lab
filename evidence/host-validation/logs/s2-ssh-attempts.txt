@@ -1,0 +1,24 @@
+Warning: Permanently added '10.10.10.10' (ED25519) to the list of known hosts.
+Permission denied, please try again.
+Warning: Permanently added '10.10.10.10' (ED25519) to the list of known hosts.
+Permission denied, please try again.
+Warning: Permanently added '10.10.10.10' (ED25519) to the list of known hosts.
+Permission denied, please try again.
+Warning: Permanently added '10.10.10.10' (ED25519) to the list of known hosts.
+Permission denied, please try again.
+Warning: Permanently added '10.10.10.10' (ED25519) to the list of known hosts.
+Permission denied, please try again.
+Warning: Permanently added '10.10.10.10' (ED25519) to the list of known hosts.
+Permission denied, please try again.
+Warning: Permanently added '10.10.10.10' (ED25519) to the list of known hosts.
+Permission denied, please try again.
+kex_exchange_identification: read: Connection reset by peer
+Connection reset by 10.10.10.10 port 22
+kex_exchange_identification: read: Connection reset by peer
+Connection reset by 10.10.10.10 port 22
+kex_exchange_identification: read: Connection reset by peer
+Connection reset by 10.10.10.10 port 22
+kex_exchange_identification: read: Connection reset by peer
+Connection reset by 10.10.10.10 port 22
+kex_exchange_identification: read: Connection reset by peer
+Connection reset by 10.10.10.10 port 22

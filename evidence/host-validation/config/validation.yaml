@@ -1,0 +1,25 @@
+%YAML 1.1
+---
+vars:
+  address-groups:
+    HOME_NET: "[10.10.10.0/24]"
+    EXTERNAL_NET: "!$HOME_NET"
+  port-groups:
+    HTTP_PORTS: "[80,8080,8081]"
+    SHELLCODE_PORTS: "!80"
+    SSH_PORTS: "22"
+    FILE_DATA_PORTS: "[$HTTP_PORTS]"
+    FTP_PORTS: "21"
+pcap-file:
+  checksum-checks: no
+default-log-dir: /tmp/suricata-log
+outputs:
+  - fast:
+      enabled: yes
+      filename: fast.log
+      append: no
+  - eve-log:
+      enabled: yes
+      filetype: regular
+      filename: eve.json
+      types: [alert, flow, dns, http, smb, ssh]

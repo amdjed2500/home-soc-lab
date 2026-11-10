@@ -109,6 +109,17 @@ http.uri: /api/* AND src_ip: 192.168.10.10
 - PCAP: `evidence/pcap/scenario-4-c2-beaconing.pcap`
 - Kibana dashboard: "SOC Overview" → HTTP/Beacon panel
 
+## Live Detection Validation — 2026-11-10 (host-based harness)
+
+> The timeline above is the **simulated** narrative. The artefacts below are **real** (see `evidence/host-validation/README.md`).
+
+- Traffic: 6× `GET /api/checkin?id=victim1` from the target host to an external HTTP endpoint, plus 6 fetches of a payload whose response body contains `Invoke-WebRequest`; **149 IPv4 packets**, both HTTP transactions fully parsed.
+- Real alerts:
+  - `11/10/2026-21:11:48.957160 [**] [1:1000004:3] Possible C2 Beaconing (request threshold) [**] {TCP} 10.10.10.10:51742 -> <external>:8080`
+  - `[1:1000006:3] PowerShell Download Cradle (HTTP body heuristic)` ×6 — `{TCP} <external>:8081 -> 10.10.10.10:36222`
+- Artefacts: `evidence/host-validation/pcap/s4-c2-beaconing.pcap`, `logs/s4-c2-beaconing.fast.log`, `logs/s4-c2-beaconing.eve.json`
+- Not covered here: interval analysis (Zeek `c2_beacon.zeek` notice) and the Kibana 60 s beacon-pattern visualisation.
+
 ---
 *Report by: Amdjed Salhi*
 *Date: 2026-11-06*

@@ -40,6 +40,7 @@ A management interface alone does NOT provide traffic visibility. The monitoring
 - [Inter-VLAN Policies](pfsense/config/inter_vlan_policies.md) — specific firewall rules per VLAN
 - [Attack Scenarios](docs/attack_scenarios.md) — 5 repeatable scenarios with expected detections
 - [Validation Procedure](docs/validation_procedure.md) — 7 tests proving the SOC works
+- [Detection-Rule Validation Evidence](evidence/host-validation/README.md) — real pcaps + Suricata 8 replay proving **all 7 custom rules fire** (2026-11-10)
 - [Shared Investigation](docs/SHARED_INVESTIGATION_SCENARIO.md) — network → memory forensics workflow
 
 ## Skills Demonstrated

@@ -1,0 +1,8 @@
+Starting Nmap 7.98 ( https://nmap.org ) at 2026-11-10 21:10 +0100
+Nmap scan report for 10.10.10.10
+Host is up (0.0000010s latency).
+All 1000 scanned ports on 10.10.10.10 are in ignored states.
+Not shown: 1000 closed tcp ports (reset)
+MAC Address: 4A:CB:DF:D7:49:BD (Unknown)
+
+Nmap done: 1 IP address (1 host up) scanned in 0.19 seconds

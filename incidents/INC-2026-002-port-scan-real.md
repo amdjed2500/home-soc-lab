@@ -103,6 +103,18 @@ src_ip: 192.168.20.10 AND dest_ip: 192.168.10.10 AND event_type: alert
 - PCAP: `evidence/pcap/scenario-1-port-scan.pcap`
 - Kibana dashboard: "SOC Overview" → Alert panel
 
+## Live Detection Validation — 2026-11-10 (host-based harness)
+
+> The timeline above is the **simulated** narrative. The artefacts below are **real**: a reproducible
+> network-namespace harness captured live traffic and replayed it through Suricata 8.0.3 with the repo's
+> rules. See `evidence/host-validation/README.md`.
+
+- Traffic: `nmap -sS -Pn -p 1-1000` from attacker `10.10.20.10` → target `10.10.10.10`; **2,000 IPv4 packets** captured (1,000 SYN / 1,000 RST).
+- Real alert: `11/10/2026-21:10:56.485824 [**] [1:1000001:2] NMAP SYN Scan Detected [**] {TCP} 10.10.20.10:42449 -> 10.10.10.10:80`
+- Pass criteria met live: ≥3 distinct ports ✅ (1,000 detected); alert inside 5 s of scan start ✅.
+- Artefacts: `evidence/host-validation/pcap/s1-port-scan.pcap`, `logs/s1-port-scan.fast.log`, `logs/s1-port-scan.eve.json`, `logs/s1-nmap-output.txt`
+- Not covered here: Zeek `conn.log` S0 states, Kibana alert panel, pfSense block action.
+
 ---
 *Report by: Amdjed Salhi*
 *Date: 2026-11-05*

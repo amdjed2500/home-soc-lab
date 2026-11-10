@@ -108,6 +108,17 @@ src_ip: 192.168.20.10 AND dest_port: 22 AND event_type: alert
 - PCAP: `evidence/pcap/scenario-2-ssh-brute-force.pcap`
 - Kibana dashboard: "SOC Overview" → SSH panel
 
+## Live Detection Validation — 2026-11-10 (host-based harness)
+
+> The timeline above is the **simulated** narrative. The artefacts below are **real** (see `evidence/host-validation/README.md`).
+
+- Traffic: real `sshd` running on the target host; 12 `ssh` attempts with a wrong password for user `admin`; **222 IPv4 packets** captured.
+- Endpoint evidence (real): 12× `Invalid user admin from 10.10.20.10` + `Failed password for invalid user admin from 10.10.20.10` → `logs/s2-authlog-failures.txt`
+- Real alert: `11/10/2026-21:11:15.678811 [**] [1:1000002:3] Suspicious SSH Connection Activity [**] {TCP} 10.10.20.10:40068 -> 10.10.10.10:22`
+- Pass criteria met live: alert after 5 failed attempts ✅ (fired on the 5th of 12).
+- Artefacts: `evidence/host-validation/pcap/s2-ssh-brute.pcap`, `logs/s2-ssh-brute.fast.log`, `logs/s2-ssh-attempts.txt`, `logs/s2-authlog-failures.txt`
+- Not covered here: Zeek `ssh.log`, Kibana >10 events/60 s panel, Windows Event ID 4625 (the target was Linux `sshd`, not Windows OpenSSH).
+
 ---
 *Report by: Amdjed Salhi*
 *Date: 2026-11-05*

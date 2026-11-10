@@ -112,6 +112,15 @@ dest_port: 445 AND src_ip: 192.168.20.10
 - PCAP: `evidence/pcap/scenario-5-smb-lateral.pcap`
 - Kibana dashboard: "SOC Overview" → SMB panel
 
+## Live Detection Validation — 2026-11-10 (host-based harness)
+
+> The timeline above is the **simulated** narrative. The artefacts below are **real** (see `evidence/host-validation/README.md`).
+
+- Traffic: 3 established TCP sessions to `10.10.10.10:445` carrying a real SMB1 `\xffSMB` negotiate header.
+- Real alerts: 3× `11/10/2026-21:17:46 [**] [1:1000005:1] SMB Lateral Movement Attempt [**] {TCP} 10.10.20.10:36810 -> 10.10.10.10:445`
+- Artefacts: `evidence/host-validation/pcap/s5-smb-lateral.pcap`, `logs/s5-smb-lateral.fast.log`, `logs/s5-smb-lateral.eve.json`
+- Limitation: the target is a stub listener on :445, not a Windows SMB service — no `psexec`/`PSEXESVC.exe` or Event ID 4688 evidence. The rule's SMB-header content match is confirmed.
+
 ---
 *Report by: Amdjed Salhi*
 *Date: 2026-11-07*

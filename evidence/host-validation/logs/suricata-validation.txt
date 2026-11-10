@@ -1,0 +1,126 @@
+----- s1-port-scan -----
+Notice: suricata: This is Suricata version 8.0.3 RELEASE running in USER mode
+Info: cpu: CPUs/cores online: 8
+Info: suricata: Setting engine mode to IDS mode by default
+Info: suricata: Preparing unexpected signal handling
+Info: suricata: No 'host-mode': suricata is in IDS mode, using default setting 'sniffer-only'
+Info: logopenfile: fast output device (regular) initialized: fast.log
+Info: logopenfile: eve-log output device (regular) initialized: eve.json
+Warning: counters: stats are enabled but no loggers are active
+Info: detect: 1 rule files processed. 7 rules successfully loaded, 0 rules failed, 0 rules skipped
+Info: threshold-config: Threshold config parsed: 0 rule(s) found
+Info: detect: 7 signatures processed. 0 are IP-only rules, 1 are inspecting packet payload, 3 inspect application layer, 0 are decoder event only
+Info: pcap: Starting file run for /mnt/c/Users/benha/home-soc-lab/evidence/host-validation/pcap/s1-port-scan.pcap
+Notice: threads: Threads created -> W: 1 FM: 1 FR: 1   Engine started.
+Info: pcap: pcap file /mnt/c/Users/benha/home-soc-lab/evidence/host-validation/pcap/s1-port-scan.pcap end of file reached (pcap err code 0)
+Notice: suricata: Signal Received.  Stopping engine.
+Info: suricata: time elapsed 0.021s
+Notice: pcap: read 1 file, 2013 packets, 112930 bytes
+11/10/2026-21:10:56.485824  [**] [1:1000001:2] NMAP SYN Scan Detected [**] [Classification: (null)] [Priority: 3] {TCP} 10.10.20.10:42449 -> 10.10.10.10:80
+----- s2-ssh-brute -----
+Notice: suricata: This is Suricata version 8.0.3 RELEASE running in USER mode
+Info: cpu: CPUs/cores online: 8
+Info: suricata: Setting engine mode to IDS mode by default
+Info: suricata: Preparing unexpected signal handling
+Info: suricata: No 'host-mode': suricata is in IDS mode, using default setting 'sniffer-only'
+Info: logopenfile: fast output device (regular) initialized: fast.log
+Info: logopenfile: eve-log output device (regular) initialized: eve.json
+Warning: counters: stats are enabled but no loggers are active
+Info: detect: 1 rule files processed. 7 rules successfully loaded, 0 rules failed, 0 rules skipped
+Info: threshold-config: Threshold config parsed: 0 rule(s) found
+Info: detect: 7 signatures processed. 0 are IP-only rules, 1 are inspecting packet payload, 3 inspect application layer, 0 are decoder event only
+Info: pcap: Starting file run for /mnt/c/Users/benha/home-soc-lab/evidence/host-validation/pcap/s2-ssh-brute.pcap
+Notice: threads: Threads created -> W: 1 FM: 1 FR: 1   Engine started.
+Info: pcap: pcap file /mnt/c/Users/benha/home-soc-lab/evidence/host-validation/pcap/s2-ssh-brute.pcap end of file reached (pcap err code 0)
+Notice: suricata: Signal Received.  Stopping engine.
+Info: suricata: time elapsed 0.020s
+Notice: pcap: read 1 file, 227 packets, 58934 bytes
+11/10/2026-21:11:15.678811  [**] [1:1000002:3] Suspicious SSH Connection Activity [**] [Classification: (null)] [Priority: 3] {TCP} 10.10.20.10:40068 -> 10.10.10.10:22
+----- s3-dns-tunneling -----
+Notice: suricata: This is Suricata version 8.0.3 RELEASE running in USER mode
+Info: cpu: CPUs/cores online: 8
+Info: suricata: Setting engine mode to IDS mode by default
+Info: suricata: Preparing unexpected signal handling
+Info: suricata: No 'host-mode': suricata is in IDS mode, using default setting 'sniffer-only'
+Info: logopenfile: fast output device (regular) initialized: fast.log
+Info: logopenfile: eve-log output device (regular) initialized: eve.json
+Warning: counters: stats are enabled but no loggers are active
+Info: detect: 1 rule files processed. 7 rules successfully loaded, 0 rules failed, 0 rules skipped
+Info: threshold-config: Threshold config parsed: 0 rule(s) found
+Info: detect: 7 signatures processed. 0 are IP-only rules, 1 are inspecting packet payload, 3 inspect application layer, 0 are decoder event only
+Info: pcap: Starting file run for /mnt/c/Users/benha/home-soc-lab/evidence/host-validation/pcap/s3-dns-tunneling.pcap
+Notice: threads: Threads created -> W: 1 FM: 1 FR: 1   Engine started.
+Info: pcap: pcap file /mnt/c/Users/benha/home-soc-lab/evidence/host-validation/pcap/s3-dns-tunneling.pcap end of file reached (pcap err code 0)
+Notice: suricata: Signal Received.  Stopping engine.
+Info: suricata: time elapsed 0.019s
+Notice: pcap: read 1 file, 15 packets, 2030 bytes
+11/10/2026-21:11:37.695489  [**] [1:1000003:3] Possible DNS Tunneling (long label heuristic) [**] [Classification: (null)] [Priority: 3] {UDP} 10.10.10.10:55870 -> 8.8.8.8:53
+----- s4-c2-beaconing -----
+Notice: suricata: This is Suricata version 8.0.3 RELEASE running in USER mode
+Info: cpu: CPUs/cores online: 8
+Info: suricata: Setting engine mode to IDS mode by default
+Info: suricata: Preparing unexpected signal handling
+Info: suricata: No 'host-mode': suricata is in IDS mode, using default setting 'sniffer-only'
+Info: logopenfile: fast output device (regular) initialized: fast.log
+Info: logopenfile: eve-log output device (regular) initialized: eve.json
+Warning: counters: stats are enabled but no loggers are active
+Info: detect: 1 rule files processed. 7 rules successfully loaded, 0 rules failed, 0 rules skipped
+Info: threshold-config: Threshold config parsed: 0 rule(s) found
+Info: detect: 7 signatures processed. 0 are IP-only rules, 1 are inspecting packet payload, 3 inspect application layer, 0 are decoder event only
+Info: pcap: Starting file run for /mnt/c/Users/benha/home-soc-lab/evidence/host-validation/pcap/s4-c2-beaconing.pcap
+Notice: threads: Threads created -> W: 1 FM: 1 FR: 1   Engine started.
+Info: pcap: pcap file /mnt/c/Users/benha/home-soc-lab/evidence/host-validation/pcap/s4-c2-beaconing.pcap end of file reached (pcap err code 0)
+Notice: suricata: Signal Received.  Stopping engine.
+Info: suricata: time elapsed 0.019s
+Notice: pcap: read 1 file, 149 packets, 16290 bytes
+11/10/2026-21:11:48.920881  [**] [1:1000006:3] PowerShell Download Cradle (HTTP body heuristic) [**] [Classification: (null)] [Priority: 3] {TCP} 172.29.245.225:8081 -> 10.10.10.10:36222
+11/10/2026-21:11:48.932430  [**] [1:1000006:3] PowerShell Download Cradle (HTTP body heuristic) [**] [Classification: (null)] [Priority: 3] {TCP} 172.29.245.225:8081 -> 10.10.10.10:36230
+11/10/2026-21:11:48.942761  [**] [1:1000006:3] PowerShell Download Cradle (HTTP body heuristic) [**] [Classification: (null)] [Priority: 3] {TCP} 172.29.245.225:8081 -> 10.10.10.10:36244
+11/10/2026-21:11:48.952547  [**] [1:1000006:3] PowerShell Download Cradle (HTTP body heuristic) [**] [Classification: (null)] [Priority: 3] {TCP} 172.29.245.225:8081 -> 10.10.10.10:36248
+11/10/2026-21:11:48.957160  [**] [1:1000004:3] Possible C2 Beaconing (request threshold) [**] [Classification: (null)] [Priority: 3] {TCP} 10.10.10.10:51742 -> 172.29.245.225:8080
+11/10/2026-21:11:48.961477  [**] [1:1000006:3] PowerShell Download Cradle (HTTP body heuristic) [**] [Classification: (null)] [Priority: 3] {TCP} 172.29.245.225:8081 -> 10.10.10.10:36260
+11/10/2026-21:11:48.973392  [**] [1:1000006:3] PowerShell Download Cradle (HTTP body heuristic) [**] [Classification: (null)] [Priority: 3] {TCP} 172.29.245.225:8081 -> 10.10.10.10:36272
+----- s5-smb-lateral -----
+Notice: suricata: This is Suricata version 8.0.3 RELEASE running in USER mode
+Info: cpu: CPUs/cores online: 8
+Info: suricata: Setting engine mode to IDS mode by default
+Info: suricata: Preparing unexpected signal handling
+Info: suricata: No 'host-mode': suricata is in IDS mode, using default setting 'sniffer-only'
+Info: logopenfile: fast output device (regular) initialized: fast.log
+Info: logopenfile: eve-log output device (regular) initialized: eve.json
+Warning: counters: stats are enabled but no loggers are active
+Info: detect: 1 rule files processed. 7 rules successfully loaded, 0 rules failed, 0 rules skipped
+Info: threshold-config: Threshold config parsed: 0 rule(s) found
+Info: detect: 7 signatures processed. 0 are IP-only rules, 1 are inspecting packet payload, 3 inspect application layer, 0 are decoder event only
+Info: pcap: Starting file run for /mnt/c/Users/benha/home-soc-lab/evidence/host-validation/pcap/s5-smb-lateral.pcap
+Notice: threads: Threads created -> W: 1 FM: 1 FR: 1   Engine started.
+Info: pcap: pcap file /mnt/c/Users/benha/home-soc-lab/evidence/host-validation/pcap/s5-smb-lateral.pcap end of file reached (pcap err code 0)
+Notice: suricata: Signal Received.  Stopping engine.
+Info: suricata: time elapsed 0.020s
+Notice: pcap: read 1 file, 30 packets, 2262 bytes
+11/10/2026-21:17:46.642238  [**] [1:1000005:1] SMB Lateral Movement Attempt [**] [Classification: (null)] [Priority: 3] {TCP} 10.10.20.10:36810 -> 10.10.10.10:445
+11/10/2026-21:17:46.642238  [**] [1:1000005:1] SMB Lateral Movement Attempt [**] [Classification: (null)] [Priority: 3] {TCP} 10.10.20.10:36794 -> 10.10.10.10:445
+11/10/2026-21:17:46.642238  [**] [1:1000005:1] SMB Lateral Movement Attempt [**] [Classification: (null)] [Priority: 3] {TCP} 10.10.20.10:36786 -> 10.10.10.10:445
+----- s6-icmp-tunnel -----
+Notice: suricata: This is Suricata version 8.0.3 RELEASE running in USER mode
+Info: cpu: CPUs/cores online: 8
+Info: suricata: Setting engine mode to IDS mode by default
+Info: suricata: Preparing unexpected signal handling
+Info: suricata: No 'host-mode': suricata is in IDS mode, using default setting 'sniffer-only'
+Info: logopenfile: fast output device (regular) initialized: fast.log
+Info: logopenfile: eve-log output device (regular) initialized: eve.json
+Warning: counters: stats are enabled but no loggers are active
+Info: detect: 1 rule files processed. 7 rules successfully loaded, 0 rules failed, 0 rules skipped
+Info: threshold-config: Threshold config parsed: 0 rule(s) found
+Info: detect: 7 signatures processed. 0 are IP-only rules, 1 are inspecting packet payload, 3 inspect application layer, 0 are decoder event only
+Info: pcap: Starting file run for /mnt/c/Users/benha/home-soc-lab/evidence/host-validation/pcap/s6-icmp-tunnel.pcap
+Notice: threads: Threads created -> W: 1 FM: 1 FR: 1   Engine started.
+Info: pcap: pcap file /mnt/c/Users/benha/home-soc-lab/evidence/host-validation/pcap/s6-icmp-tunnel.pcap end of file reached (pcap err code 0)
+Notice: suricata: Signal Received.  Stopping engine.
+Info: suricata: time elapsed 0.019s
+Notice: pcap: read 1 file, 6 packets, 1780 bytes
+11/10/2026-21:12:01.187805  [**] [1:1000007:1] Possible ICMP Tunneling [**] [Classification: (null)] [Priority: 3] {ICMP} 10.10.10.10:8 -> 8.8.8.8:0
+11/10/2026-21:12:02.208875  [**] [1:1000007:1] Possible ICMP Tunneling [**] [Classification: (null)] [Priority: 3] {ICMP} 10.10.10.10:8 -> 8.8.8.8:0
+11/10/2026-21:12:03.232810  [**] [1:1000007:1] Possible ICMP Tunneling [**] [Classification: (null)] [Priority: 3] {ICMP} 10.10.10.10:8 -> 8.8.8.8:0
+11/10/2026-21:12:04.256818  [**] [1:1000007:1] Possible ICMP Tunneling [**] [Classification: (null)] [Priority: 3] {ICMP} 10.10.10.10:8 -> 8.8.8.8:0
+11/10/2026-21:12:05.280898  [**] [1:1000007:1] Possible ICMP Tunneling [**] [Classification: (null)] [Priority: 3] {ICMP} 10.10.10.10:8 -> 8.8.8.8:0

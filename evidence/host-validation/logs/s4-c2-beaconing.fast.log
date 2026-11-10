@@ -1,0 +1,7 @@
+11/10/2026-21:11:48.920881  [**] [1:1000006:3] PowerShell Download Cradle (HTTP body heuristic) [**] [Classification: (null)] [Priority: 3] {TCP} 172.29.245.225:8081 -> 10.10.10.10:36222
+11/10/2026-21:11:48.932430  [**] [1:1000006:3] PowerShell Download Cradle (HTTP body heuristic) [**] [Classification: (null)] [Priority: 3] {TCP} 172.29.245.225:8081 -> 10.10.10.10:36230
+11/10/2026-21:11:48.942761  [**] [1:1000006:3] PowerShell Download Cradle (HTTP body heuristic) [**] [Classification: (null)] [Priority: 3] {TCP} 172.29.245.225:8081 -> 10.10.10.10:36244
+11/10/2026-21:11:48.952547  [**] [1:1000006:3] PowerShell Download Cradle (HTTP body heuristic) [**] [Classification: (null)] [Priority: 3] {TCP} 172.29.245.225:8081 -> 10.10.10.10:36248
+11/10/2026-21:11:48.957160  [**] [1:1000004:3] Possible C2 Beaconing (request threshold) [**] [Classification: (null)] [Priority: 3] {TCP} 10.10.10.10:51742 -> 172.29.245.225:8080
+11/10/2026-21:11:48.961477  [**] [1:1000006:3] PowerShell Download Cradle (HTTP body heuristic) [**] [Classification: (null)] [Priority: 3] {TCP} 172.29.245.225:8081 -> 10.10.10.10:36260
+11/10/2026-21:11:48.973392  [**] [1:1000006:3] PowerShell Download Cradle (HTTP body heuristic) [**] [Classification: (null)] [Priority: 3] {TCP} 172.29.245.225:8081 -> 10.10.10.10:36272

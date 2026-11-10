@@ -108,6 +108,16 @@ dns.query: * AND dns.query_length > 50
 - PCAP: `evidence/pcap/scenario-3-dns-tunneling.pcap`
 - Kibana dashboard: "SOC Overview" → DNS panel
 
+## Live Detection Validation — 2026-11-10 (host-based harness)
+
+> The timeline above is the **simulated** narrative. The artefacts below are **real** (see `evidence/host-validation/README.md`).
+
+- Traffic: 14 DNS A-queries with random **32-hex-character** labels (`<32hex>.data.tunnel.attacker.com`) sent to 8.8.8.8 from the target host.
+- Real alert: `11/10/2026-21:11:37.695489 [**] [1:1000003:3] Possible DNS Tunneling (long label heuristic) [**] {UDP} 10.10.10.10:55870 -> 8.8.8.8:53`
+- Suricata parsed **14 DNS events** from the capture; the alert fired on the 10th matching query.
+- Artefacts: `evidence/host-validation/pcap/s3-dns-tunneling.pcap`, `logs/s3-dns-tunneling.fast.log`, `logs/s3-dns-tunneling.eve.json`
+- Not covered here: Zeek `dns.log` / `dns_tunneling.zeek` notice, Kibana >50-char query panel, threat-intel feed.
+
 ---
 *Report by: Amdjed Salhi*
 *Date: 2026-11-06*

@@ -1,0 +1,3 @@
+11/10/2026-21:17:46.642238  [**] [1:1000005:1] SMB Lateral Movement Attempt [**] [Classification: (null)] [Priority: 3] {TCP} 10.10.20.10:36810 -> 10.10.10.10:445
+11/10/2026-21:17:46.642238  [**] [1:1000005:1] SMB Lateral Movement Attempt [**] [Classification: (null)] [Priority: 3] {TCP} 10.10.20.10:36794 -> 10.10.10.10:445
+11/10/2026-21:17:46.642238  [**] [1:1000005:1] SMB Lateral Movement Attempt [**] [Classification: (null)] [Priority: 3] {TCP} 10.10.20.10:36786 -> 10.10.10.10:445
